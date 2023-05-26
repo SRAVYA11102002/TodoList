@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>
+            <%= locals.title%>
+        </title>
+        <link rel="stylesheet" href="/css/home.css">
+        <script  src="https://kit.fontawesome.com/b3348ae33f.js"
+        crossorigin="anonymous"
+      ></script>
+      
+    </head>
+    <body>
+        <header id="header">
+        <h1 id="page-heading">
+            
+            <i class="fa-solid fa-list"></i>
+            TODO LIST</h1>
+        <div id="contact-list-container">
+            <ul>
+                   
+                <% for (let i of  contact_list) { %> 
+                   <div class="details"> 
+                        <li class="contact">
+                           <!--<p><%= i.name %></p>
+                            <p><%= i.category %></p>--> 
+                            <p><%= i.name %> <br /> <%= i.category %></p>
+                            
+                        </li>
+                    </div>
+                    <div class="delete-button">
+                        <a href="/delete-contact/?category=<%= i.category %>">
+                            <i class="fa-solid fa-trash-can">delete</i>
+                        </a>
+                    </div>
+                <% } %>
+            </ul>
+        </div>
+
+        <form id="new-contact-from" action="/create-contact" method="POST">
+            Description<input type="text" name="name" placeholder="What do you need to do?" required>
+            Personal<input type="text" name="category" placeholder="choose a category" required>
+            <button type="submit">Add Task</button>
+        </form>
+        <script type="text/javascript" src="/js/home.js"></script>
+        </header>
+    </body>
+</html>
+
